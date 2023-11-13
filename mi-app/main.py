@@ -6,8 +6,8 @@ def pruebacloudbuild(event, context):
          event (dict): Event payload.
          context (google.cloud.functions.Context): Metadata for the event.
     """
-    file = open(event)
+    file = open(event['name'])
     data = json.load(file)
-    print(f"Processing file: {file['name']}.")
+    print(f"Processing file: {event['name']}.")
     print(data['emp_details'])
     file.close()
