@@ -7,5 +7,5 @@ steps:
   - --region=europe-west1
   - --source=./mi-app
   - --trigger-bucket=gs://prueba-cloudbuild-function
-  - --runtime=python39
+  - --runtime=python312
   - --allow-unauthenticated
