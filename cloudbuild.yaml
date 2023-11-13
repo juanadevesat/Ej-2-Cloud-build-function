@@ -1,16 +1,11 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+- name: 'gcr.io/cloud-builders/gcloud'
   args:
-  - gcloud
   - functions
   - deploy
   - pruebacloudbuild
-  - --region
-  - europe-west1
-  - --source
-  - ./mi-app
-  - --trigger-bucket
-  - prueba-cloudbuild-function
-  - --runtime
-  - python3.12
+  - --region=europe-west1
+  - --source=./mi-app
+  - --trigger-bucket=prueba-cloudbuild-function
+  - --runtime=python3.12
   - --allow-unauthenticated
