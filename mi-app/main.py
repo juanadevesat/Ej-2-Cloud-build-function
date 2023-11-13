@@ -1,3 +1,5 @@
+import json
+
 def pruebacloudbuild(event, context):
     """Triggered by a change to a Cloud Storage bucket.
     Args:
@@ -5,6 +7,6 @@ def pruebacloudbuild(event, context):
          context (google.cloud.functions.Context): Metadata for the event.
     """
     file = event
+    data = json.load(file)
     print(f"Processing file: {file['name']}.")
-    print("Hello, World!!")
-    print(file)
+    print(data)
