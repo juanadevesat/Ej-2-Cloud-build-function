@@ -13,3 +13,4 @@ steps:
   - prueba-cloudbuild-function
   - --runtime
   - python3.12
+  - allow-unauthenticated
