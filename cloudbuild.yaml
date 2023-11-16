@@ -3,7 +3,7 @@ steps:
   args:
   - functions
   - deploy
-  - funcion-juan-ejercicio-final
+  - frombuckettofirestore
   - --region=europe-west1
   - --source=./cloud-function
   - --trigger-bucket=gs://bucket-juan-ejercicio-final
