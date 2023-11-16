@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - functions
+  - deploy
+  - funcion-juan-ejercicio-final
+  - --region=europe-west2
+  - --source=./cloud-function
+  - --trigger-bucket=gs://bucket-juan-ejercicio-final
+  - --runtime=python312
+  - --allow-unauthenticated
