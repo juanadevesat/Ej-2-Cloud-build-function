@@ -4,7 +4,7 @@ steps:
   - functions
   - deploy
   - funcion-juan-ejercicio-final
-  - --region=europe-west2
+  - --region=europe-west1
   - --source=./cloud-function
   - --trigger-bucket=gs://bucket-juan-ejercicio-final
   - --runtime=python312
