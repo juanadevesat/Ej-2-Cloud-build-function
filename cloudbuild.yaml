@@ -27,5 +27,6 @@ steps:
   - --image=europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0
   - --region=europe-west1
   - --port=5000
+  - --allow-unauthenticated
 images:
 - europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0
