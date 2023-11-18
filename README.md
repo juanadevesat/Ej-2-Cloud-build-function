@@ -365,7 +365,7 @@ if __name__ == '__main__':
 
 Empezamos creando un repositorio de github con rama main y rama dev, donde cambiamos la rama principal a dev, y posteriormente crear un trigger que se dispare cuando en nuestro repositorio hayan modificaciones en la rama main.
 
-![Alt text](img/cloudbuild-trigger.png)
+![trigger cloud build](img/cloudbuild-trigger.png)
 
 Dentro de nuestro repositorio debemos tener un *clodbuild.yaml* que configure la *cloud function* y cree una imagen de los ficheros contenidos en el repositorio, suba esa imagen a *artifact registry* y configure un *cloud run* utilizando esta imagen.
 
@@ -409,3 +409,24 @@ CMD ["python", "app.py"]
 ```
 
 **Cloudbuild.yaml** - Crear *cloud run*
+
+```yaml
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: 
+  - run
+  - deploy
+  - cloudrun-juan-ejercicio-final
+  - --image=europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0
+  - --region=europe-west1
+  - --port=5000
+  - --allow-unauthenticated
+images:
+- europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0
+```
+
+![cloud build](img/Captura-cloudbuild.PNG.png)
+
+Con el *cloud build* satisfactoriamente desplegado, el resultado final es una arquitectura como la siguiente:
+
+![Alt text](img/Resultado-final.png)
