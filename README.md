@@ -367,3 +367,45 @@ Empezamos creando un repositorio de github con rama main y rama dev, donde cambi
 
 ![Alt text](img/cloudbuild-trigger.png)
 
+Dentro de nuestro repositorio debemos tener un *clodbuild.yaml* que configure la *cloud function* y cree una imagen de los ficheros contenidos en el repositorio, suba esa imagen a *artifact registry* y configure un *cloud run* utilizando esta imagen.
+
+**Clodbuild.yaml** - crear function:
+
+```yaml
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - functions
+  - deploy
+  - frombuckettofirestore
+  - --region=europe-west1
+  - --source=./cloud-function
+  - --trigger-bucket=gs://bucket-juan-ejercicio-final
+  - --runtime=python312
+  - --allow-unauthenticated
+```
+
+**Dockerfile** - Dockerfile para la creación de la imagen:
+
+```dockerfile
+FROM python:3.12.0-alpine3.18
+
+COPY web web/
+WORKDIR web/
+
+RUN pip install -r "requirements.txt"
+
+CMD ["python", "app.py"]
+```
+
+**Cloudbuild.yaml** - Crear imagen y subirla a *artifact registry*:
+
+```yaml
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0', '.' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0']
+```
+
+**Cloudbuild.yaml** - Crear *cloud run*

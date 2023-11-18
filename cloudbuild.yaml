@@ -9,9 +9,17 @@ steps:
   - --trigger-bucket=gs://bucket-juan-ejercicio-final
   - --runtime=python312
   - --allow-unauthenticated
-
+# Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0', '.' ]
 
+# Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0']
+
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'cloudrun-juan-ejercicio-final', '--image', 'gcr.io/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final', '--region', 'europe-west1']
+images:
+- gcr.io/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final
