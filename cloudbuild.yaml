@@ -20,6 +20,12 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'cloudrun-juan-ejercicio-final', '--image', 'gcr.io/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final', '--region', 'europe-west1']
+  args: 
+  - run
+  - deploy
+  - cloudrun-juan-ejercicio-final
+  - --image=europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0
+  - --region=europe-west1
+  - --port=5000
 images:
-- gcr.io/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final
+- europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0
