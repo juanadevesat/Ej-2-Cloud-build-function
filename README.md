@@ -333,7 +333,7 @@ def data():
     return: data.html
     """
 
-    # Configurar conexión con dynamoDB
+    # Configurar conexión con firestore
     db = firestore.Client()
     doc_ref = db.collection(u'firestore-juan-ejercicio-final').stream()
 
