@@ -9,6 +9,7 @@ steps:
   - --trigger-bucket=gs://bucket-juan-ejercicio-final
   - --runtime=python312
   - --allow-unauthenticated
+  
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/thebridge-sept23/juan-docker-registro/imagen-ejercicio-final:1.0', '.' ]

@@ -359,7 +359,7 @@ if __name__ == '__main__':
 >
 >![Despliegue continuo](img/Hire-DevOps-engineer.png)
 >
->Cuando la rama *main* del repositorio se actualiza, cloud build utilizará los ficheros de la rama para crear una imágen de la web, la subirá a *google artifact registry* y la desplegará con *cloud run*.
+>Cuando la rama *main* del repositorio se actualiza, cloud build utilizará los ficheros de la rama para crear una imágen de la web, la subirá a *google artifact registry* y la desplegará con *cloud run*..
 
 ### Resolución:
 
