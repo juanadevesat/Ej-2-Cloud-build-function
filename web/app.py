@@ -71,12 +71,22 @@ def index():
                 blob = bucket.blob(f'usuarios{todayUTC}.json')
                 blob.upload_from_string(data=json.dumps(usuario),content_type='application/json')
                 time.sleep(5)
-                return redirect("/data")
+                return redirect("/loading")
             except:
                 flash("¡Ha ocurrido un error! No se han almacenado los datos.")
                 return render_template("index.html")
     else:
         return render_template("index.html")
+
+
+@app.route("/loading")
+def loading():
+    """
+    Definición: Endpoint para la página de espera mientras carga la tabla.
+
+    Return: loading.html
+    """
+    return render_template("loading.html")
 
 
 @app.route("/data")
