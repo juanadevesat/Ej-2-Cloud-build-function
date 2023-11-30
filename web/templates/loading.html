@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tabla de usuarios
+{% endblock %}
+
+{% block script %}
+    <script>
+        function navigate() {
+        window.location.href = 'data';  // redirect when done!
+        }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        sleep(3000).then(navigate); // load the slow url then navigate
+    </script>
+{% endblock %}
+
+{% block main %}
+    <h3 class="section-title">Tabla de usuarios</h3>
+    <table class="table mx-auto w-50">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo eletrónico</th>
+                <th scope="col">Fecha de registro</th>
+            </tr>
+        </thead>
+    </table>
+    <br>
+    <div class="lds-facebook"><div></div><div></div><div></div>
+
+{% endblock %}
